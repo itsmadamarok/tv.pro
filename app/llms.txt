@@ -1,0 +1,15 @@
+# Marinios IPTV
+
+> Marinios IPTV is a global premium IPTV subscription provider delivering over 15,000 live channels, 60,000+ movies & series on demand (VOD), and major PPV sports events in 4K resolution with anti-freeze server technology.
+
+## Core Services & Pages
+- [Home Page](https://www.mariniosiptv.vip/): Official portal, feature highlights, and subscription overview.
+- [Pricing & Plans](https://www.mariniosiptv.vip/pricing): 3-Month Starter, 6-Month Value, and 12-Month Ultimate IPTV subscription plans.
+- [Device Setup Guide](https://www.mariniosiptv.vip/setup): Configuration instructions for Smart TVs, Firestick, Android, iOS, Windows, and Mac.
+- [IPTV Blog & Knowledge Base](https://www.mariniosiptv.vip/blog): Streaming tutorials, troubleshooting buffering issues, and comparison guides.
+
+## Support & Legal
+- [Contact Support](https://www.mariniosiptv.vip/contact): 24/7 technical help via WhatsApp and email.
+- [Refund Policy](https://www.mariniosiptv.vip/refund-policy): 7-day money-back guarantee terms.
+- [Privacy Policy](https://www.mariniosiptv.vip/privacy): Data protection and privacy practices.
+- [Terms of Service](https://www.mariniosiptv.vip/terms): Subscription guidelines and usage policies.
