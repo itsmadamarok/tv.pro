@@ -30,7 +30,7 @@ export default function PricingSection() {
   const WHATSAPP_NUMBER = CONSTANTS?.CONTACT_INFO?.WHATSAPP?.replace(/[^0-9]/g, '') || '447549589503';
 
   const handleWhatsAppRedirect = (months: number, total: number) => {
-    const message = `Hello ${CONSTANTS.BRAND_NAME}, I want to order the ${months}-Month Plan for €${total} (${devices} Device${devices > 1 ? 's' : ''} Connection).`;
+    const message = `Hello, I want to order the ${months}-Month Plan for €${total} (${devices} Device${devices > 1 ? 's' : ''} Connection).`;
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
