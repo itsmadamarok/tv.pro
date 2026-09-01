@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 
 const DOMAIN = 'iptvservicetv.pro';
 const BASE_URL = `https://${DOMAIN}`;
+const SITE_URL = BASE_URL; // Alias for backward compatibility
 const BRAND_NAME = 'IPTV Service';
 
 // Primary & secondary search targets
@@ -23,26 +24,40 @@ const SECONDARY_KEYWORDS = [
 // Contact & Support Details (WhatsApp only)
 export const CONTACT_INFO = {
   EMAIL: 'support@iptvservicetv.pro',
-  PHONE: '+1 (800) 000-0000', // replace with your active phone number
-  WHATSAPP: '+1 (800) 000-0000', // replace with your active WhatsApp number
+  PHONE: '+1 (800) 000-0000',
+  WHATSAPP: '+1 (800) 000-0000',
   SUPPORT_HOURS: '24/7 Live Support',
 };
 
-interface SEOMetadataOptions {
-  pageName: string;
+export interface SEOMetadataOptions {
+  pageName?: string;
+  title?: string;
   description?: string;
   path?: string;
   keywords?: string[];
   noIndex?: boolean;
 }
 
-export const generateSEOMetadata = ({
-  pageName,
-  description,
-  path = '',
-  keywords = [],
-  noIndex = false,
-}: SEOMetadataOptions): Metadata => {
+// Universal metadata generator supporting both String and Object arguments
+export function generateSEOMetadata(
+  input?: string | SEOMetadataOptions
+): Metadata {
+  let pageName = 'Home';
+  let description: string | undefined;
+  let path = '';
+  let keywords: string[] = [];
+  let noIndex = false;
+
+  if (typeof input === 'string') {
+    pageName = input;
+  } else if (typeof input === 'object' && input !== null) {
+    pageName = input.pageName || input.title || 'Home';
+    description = input.description;
+    path = input.path || '';
+    keywords = input.keywords || [];
+    noIndex = input.noIndex || false;
+  }
+
   const cleanPath = path ? (path.startsWith('/') ? path : `/${path}`) : '';
   const pageUrl = `${BASE_URL}${cleanPath}`;
 
@@ -87,7 +102,7 @@ export const generateSEOMetadata = ({
       description: defaultDescription,
     },
   };
-};
+}
 
 export const generateOrganizationSchema = () => ({
   '@context': 'https://schema.org',
@@ -107,6 +122,7 @@ export const generateOrganizationSchema = () => ({
 export const CONSTANTS = {
   DOMAIN,
   BASE_URL,
+  SITE_URL, // <--- Added here
   BRAND_NAME,
   FOCUS_KEYWORD,
   SECONDARY_KEYWORDS,

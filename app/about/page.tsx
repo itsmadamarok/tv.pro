@@ -8,63 +8,52 @@ import {
   Zap, 
   ShieldCheck, 
   Trophy, 
-  Film, 
-  Clock, 
   Headphones, 
   Sparkles,
   Heart,
-  Star,
   CheckCircle,
   Cpu,
   ArrowRight,
   MonitorSmartphone,
   Mail,
-  ExternalLink,
-  ShieldAlert,
   Activity
 } from 'lucide-react';
 
-export const metadata = generateSEOMetadata('About Us');
+export const metadata = generateSEOMetadata({
+  pageName: 'About Us',
+  path: '/about',
+  description: `Learn about ${CONSTANTS.BRAND_NAME}, our high-availability 4K streaming infrastructure, engineering team, and commitment to broadcast-grade digital entertainment.`
+});
 
 export default function AboutPage() {
-  const brandName = CONSTANTS?.BRAND_NAME || 'Platform';
-  const siteUrl = CONSTANTS?.SITE_URL || 'https://yourdomain.com';
-  const supportEmail = CONSTANTS?.CONTACT_INFO?.EMAIL || 'support@yourdomain.com';
+  const brandName = CONSTANTS.BRAND_NAME;
+  const baseUrl = CONSTANTS.BASE_URL;
+  const supportEmail = CONSTANTS.CONTACT_INFO.EMAIL;
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: `About ${brandName}`,
-    url: `${siteUrl}/about`,
+    url: `${baseUrl}/about`,
     description: `Learn about ${brandName}, our streaming infrastructure, engineering team, and commitment to high-availability digital broadcasts.`,
     mainEntity: {
       '@type': 'Organization',
       name: brandName,
-      url: siteUrl,
-      logo: `${siteUrl}/logo.png`,
+      url: baseUrl,
+      logo: `${baseUrl}/logo.png`,
       email: supportEmail,
-      foundingDate: '2024',
-      founder: {
-        '@type': 'Person',
-        name: 'Technical Operations Lead',
-        jobTitle: 'Full-Stack Developer & Infrastructure Engineer',
-        sameAs: [
-          'https://www.linkedin.com',
-          'https://github.com'
-        ]
-      },
       contactPoint: {
         '@type': 'ContactPoint',
         email: supportEmail,
+        telephone: CONSTANTS.CONTACT_INFO.PHONE,
         contactType: 'customer support',
-        availableLanguage: ['English', 'French', 'Arabic']
+        availableLanguage: ['English']
       }
     }
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-[#030712] text-slate-300">
-      {/* Structured Data for Google Trust & E-E-A-T */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -91,7 +80,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Real Metrics & Statistics */}
+      {/* Metrics & Stats */}
       <section className="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {[
@@ -109,9 +98,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Main Content Area */}
+      {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 py-8">
-        
         {/* Mission Card */}
         <div className="bg-slate-900/80 border border-blue-500/30 rounded-3xl p-6 md:p-8 mb-12 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -130,9 +118,8 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Story & Background */}
+        {/* Story Section */}
         <div className="space-y-12">
-          
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-4 flex items-center gap-3">
               <span className="w-2 h-6 bg-blue-500 rounded-full" /> Who We Are & How We Operate
@@ -145,7 +132,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Leadership & Engineering Verification (Google E-E-A-T Card) */}
+          {/* Infrastructure Team Card */}
           <div className="bg-slate-950/70 border border-slate-800 rounded-3xl p-6 sm:p-8">
             <h2 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mb-4 flex items-center gap-3">
               <Cpu className="w-6 h-6 text-sky-400" /> Engineering & Infrastructure Team
@@ -161,11 +148,9 @@ export default function AboutPage() {
               <div className="text-center sm:text-left flex-1">
                 <div className="flex flex-wrap items-center justify-center sm:justify-between gap-2">
                   <h3 className="text-lg font-bold text-white">Platform Lead Architect & Dev Team</h3>
-                  <div className="flex items-center gap-3 text-xs">
-                    <span className="text-emerald-400 font-semibold flex items-center gap-1">
-                      <CheckCircle className="w-3.5 h-3.5" /> Verified Operations
-                    </span>
-                  </div>
+                  <span className="text-emerald-400 text-xs font-semibold flex items-center gap-1">
+                    <CheckCircle className="w-3.5 h-3.5" /> Verified Operations
+                  </span>
                 </div>
                 <p className="text-xs text-sky-400 uppercase tracking-wider mb-2">Systems Administration & Next.js Architecture</p>
                 <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
@@ -175,7 +160,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Core Value Pillars Grid */}
+          {/* Pillars */}
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-6 flex items-center gap-3">
               <span className="w-2 h-6 bg-blue-500 rounded-full" /> Architectural Advantages
@@ -217,10 +202,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Infrastructure Section */}
+          {/* Server Specs */}
           <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8">
             <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-4 flex items-center gap-3">
-              <Server className="w-6 h-6 text-sky-400" /> Enterprise-Grade Broadcast Specifications
+              <Server className="w-6 h-6 text-sky-400" /> Enterprise Broadcast Specifications
             </h2>
             <p className="text-slate-300 text-base leading-relaxed mb-6">
               {brandName} deploys high-speed 10Gbps uplinks with automated load balancing. When launching a broadcast or VOD title, the platform connects your media player to the nearest low-ping node.
@@ -241,15 +226,11 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Transparency, Security, and Customer Commitment */}
+          {/* Service Commitment & Transparency */}
           <div className="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8">
             <h2 className="text-2xl font-black text-white uppercase tracking-tight mb-4 flex items-center gap-3">
               <Award className="w-6 h-6 text-emerald-400" /> Service Commitment & Transparency
             </h2>
-            <p className="text-slate-300 text-base leading-relaxed mb-6">
-              We stand behind our service reliability with transparent policies, fast customer response times, and clear terms:
-            </p>
-            
             <div className="space-y-3 mb-6">
               {[
                 "Instant delivery of M3U and Xtream API parameters within 1 to 2 minutes of order confirmation",
@@ -277,21 +258,18 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-
         </div>
 
-        {/* Bottom CTA Card */}
+        {/* CTA */}
         <div className="mt-16 text-center">
           <div className="bg-gradient-to-b from-slate-900 to-slate-950 border border-blue-500/40 rounded-3xl p-8 sm:p-10 shadow-2xl relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(37,99,235,0.15),_transparent_70%)] pointer-events-none" />
-            
             <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-3 relative z-10">
               Experience Broadcast-Grade Streaming
             </h3>
             <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto mb-8 relative z-10 leading-relaxed">
               Explore our flexible subscription tiers or follow our easy setup guides to connect your devices.
             </p>
-            
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-10">
               <Link 
                 href="/pricing" 
@@ -309,13 +287,12 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Back to Home Link */}
+        {/* Back Link */}
         <div className="mt-12 pt-8 border-t border-slate-800 text-center">
           <Link href="/" className="inline-flex items-center gap-2 text-sky-400 hover:text-white transition-colors text-sm font-semibold">
             ← Return to Homepage
           </Link>
         </div>
-
       </div>
     </div>
   );

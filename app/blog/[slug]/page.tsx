@@ -32,7 +32,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const resolvedParams = await params;
   const post = blogPosts.find((p) => p.slug === resolvedParams.slug);
-  if (!post) return generateSEOMetadata('Article Not Found');
+  
+  if (!post) {
+    return generateSEOMetadata({
+      pageName: 'Article Not Found',
+      path: '/blog',
+      noIndex: true,
+    });
+  }
   
   const shortTitle = post.title.length > 55 ? post.title.substring(0, 52) + '...' : post.title;
   const rawDesc = post.description || post.excerpt || `Read the complete guide about ${post.title}.`;
@@ -82,7 +89,7 @@ export default async function BlogPostPage({ params }: Props) {
     notFound();
   }
 
-  // Filter out the current post to display related/latest articles
+  // Filter out current post to display related / trending articles
   const otherPosts = blogPosts.filter((p) => p.slug !== post.slug);
   const relatedPosts = otherPosts.slice(0, 4);
 

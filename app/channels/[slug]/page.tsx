@@ -1,4 +1,3 @@
-// app/channels/[slug]/page.tsx
 import { channelCategories, getCategoryBySlug } from '@/lib/channels';
 import { CONSTANTS, generateSEOMetadata } from '@/lib/seo';
 import { notFound } from 'next/navigation';
@@ -42,7 +41,13 @@ export async function generateMetadata({ params }: Props) {
   const resolvedParams = await params;
   const category = getCategoryBySlug(resolvedParams?.slug);
 
-  if (!category) return generateSEOMetadata('Category Not Found');
+  if (!category) {
+    return generateSEOMetadata({
+      pageName: 'Category Not Found',
+      path: '/channels',
+      noIndex: true,
+    });
+  }
 
   const pageTitle = `${category.name} Channel Lineup – 4K Live Streams | ${CONSTANTS.BRAND_NAME}`;
   const pageDescription = `Explore ${category.count} in the ${category.title} catalog. Stream uncompressed 4K sports, cinema & live TV with ${CONSTANTS.BRAND_NAME}.`;
