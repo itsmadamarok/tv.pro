@@ -24,8 +24,8 @@ const SECONDARY_KEYWORDS = [
 // Contact & Support Details (WhatsApp only)
 export const CONTACT_INFO = {
   EMAIL: 'support@iptvservicetv.pro',
-  PHONE: '+1 (800) 000-0000',
-  WHATSAPP: '+1 (800) 000-0000',
+  PHONE: '+447549589503',
+  WHATSAPP: '+447549589503',
   SUPPORT_HOURS: '24/7 Live Support',
 };
 
